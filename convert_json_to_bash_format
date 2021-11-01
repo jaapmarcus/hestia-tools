@@ -1,0 +1,12 @@
+<?php 
+$json=json_decode(file_get_contents('suported-languages.json'));
+
+$keylist = array();
+foreach($json as $key =>  $language){
+   if(strpos($key, 'locale') === false){
+       array_push($keylist,$key);
+   }
+}
+$test = sort($keylist);
+
+echo implode(' ',$keylist)."\n";
