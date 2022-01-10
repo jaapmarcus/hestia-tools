@@ -13,6 +13,7 @@ aarch=$(dpkg --print-architecture)
 
 echo "OS: $os"
 echo "Version: $version"
+echo "Codename: $codename"
 echo "Architecture: $aarch"
 
 #Download packages 
