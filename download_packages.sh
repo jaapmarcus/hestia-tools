@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #Versions
-hestia="1.5.3~alpha"
+hestia="1.5.4"
 hestianginx="1.21.5"
-hestiaphp="7.4.27"
+hestiaphp="7.4.27-1"
 
 #OS 
 os=$(lsb_release -s -i | tr '[:upper:]' '[:lower:]');
