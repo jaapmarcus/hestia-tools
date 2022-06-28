@@ -25,6 +25,6 @@ for installer in debian ubuntu; do
     sed -i 's/deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\]/#deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\]/g' hst-install-$installer.sh
     sed -i '/# Installing HestiaCP repo/a insert-line2'  hst-install-$installer.sh
     sed -i '/# Installing HestiaCP repo/a insert-line1'  hst-install-$installer.sh
-    sed -i 's/insert-line1/echo "deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-beta-keyring\.gpg\] https:\/\/beta\.hestiacp\.com\/ \$codename main" > \$apt\/hestia-beta\.list/g' hst-install-$installer.sh
+    sed -i 's/insert-line1/echo "deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-beta-keyring\.gpg\] https:\/\/beta\.hestiacp\.com\/ \$codename main" >> \$apt\/hestia\.list/g' hst-install-$installer.sh
     sed -i 's/insert-line2/curl -s "https:\/\/beta\.hestiacp\.com\/pubkey\.gpg" | gpg --dearmor | tee \/usr\/share\/keyrings\/hestia-beta-keyring\.gpg  >\/dev\/null 2>\&1/g' hst-install-$installer.sh
 done
