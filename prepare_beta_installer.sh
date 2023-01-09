@@ -22,7 +22,7 @@ for installer in debian ubuntu; do
     # Remove development check
     # Note: Also remvoves non supported Architecture
     sed -i '/check_result 1 "Installation aborted"/d' hst-install-$installer.sh
-    # Disables apt.hestiacp.com and change > to >> to allow also add beta-apt
+    # Disables apt.hestiacp.com and add ed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpgbeta.hestiacp.com apt.hestiacp.com key is added to the system allowing easier switching
     sed -i 's/deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\] https:\/\/$RHOST\/ \$codename main" > \$apt\/hestia\.list/#deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\] https:\/\/$RHOST\/ \$codename main" >> \$apt\/hestia\.list/g'  hst-install-$installer.sh
     sed -i '/# Installing HestiaCP repo/a insert-line2'  hst-install-$installer.sh
     sed -i '/# Installing HestiaCP repo/a insert-line1'  hst-install-$installer.sh
