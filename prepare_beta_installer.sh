@@ -22,8 +22,8 @@ for installer in debian ubuntu; do
     # Remove development check
     # Note: Also remvoves non supported Architecture
     sed -i '/check_result 1 "Installation aborted"/d' hst-install-$installer.sh
-    # Disables apt.hestiacp.com and add beta.hestiacp.com apt.hestiacp.com key is added to the system allowing easier switching
-    sed -i 's/deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\]/#deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\]/g' hst-install-$installer.sh
+    # Disables apt.hestiacp.com and change > to >> to allow also add beta-apt
+    sed -i 's/deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\] https:\/\/$RHOST\/ \$codename main" > \$apt\/hestia\.list/#deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-keyring\.gpg\] https:\/\/$RHOST\/ \$codename main" >> \$apt\/hestia\.list/g'  hst-install-$installer.sh
     sed -i '/# Installing HestiaCP repo/a insert-line2'  hst-install-$installer.sh
     sed -i '/# Installing HestiaCP repo/a insert-line1'  hst-install-$installer.sh
     sed -i 's/insert-line1/echo "deb \[arch=\$ARCH signed-by=\/usr\/share\/keyrings\/hestia-beta-keyring\.gpg\] https:\/\/beta-apt\.hestiacp\.com\/ \$codename main" >> \$apt\/hestia\.list/g' hst-install-$installer.sh
